@@ -1,0 +1,9 @@
+import openpyxl
+import pandas as pd
+import numpy as np
+from pathlib import Path
+
+df2 = pd.read_excel('分列.xlsx','Sheet2')
+df2['科目'] = df2['科目'].str.split('，|\\|_')
+df2['分数'] = df2['分数'].str.split('\\')
+df2.explode(['科目','分数'])
